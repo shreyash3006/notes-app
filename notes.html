@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" href="stylen.css">
+</head>
+<body>
+    <div class="container">
+        <h1><img src="notes.png" alt=""> Notes</h1>
+        <button class="btn"><img src="edit.png" alt=""> Create Note</button>
+        <div class="notes-container"></div>
+    </div>
+<script>
+    let notesContainer = document.querySelector('.notes-container');
+    let createBtn = document.querySelector(".btn");
+    
+    function showNotes() {
+        notesContainer.innerHTML = localStorage.getItem("notes") || '';
+        attachEventListeners();
+    }
+    
+    function updateStorage() {
+        localStorage.setItem("notes", notesContainer.innerHTML);
+    }
+    
+    function attachEventListeners() {
+        document.querySelectorAll(".input-box").forEach(note => {
+            let textBox = note.querySelector(".text-box");
+    
+            textBox.addEventListener("keyup", updateStorage);
+    
+            note.querySelector(".delete-btn").addEventListener("click", () => {
+                note.remove();
+                updateStorage();
+            });
+    
+            note.querySelector(".font-size").addEventListener("change", function () {
+                textBox.style.fontSize = this.value + "px";
+                updateStorage();
+            });
+    
+            note.querySelector(".font-style").addEventListener("change", function () {
+                textBox.style.fontFamily = this.value;
+                updateStorage();
+            });
+    
+            note.querySelector(".text-color").addEventListener("input", function () {
+                textBox.style.color = this.value;
+                updateStorage();
+            });
+    
+            note.querySelector(".bg-color").addEventListener("input", function () {
+                note.style.backgroundColor = this.value;
+                updateStorage();
+            });
+        });
+    }
+    
+    createBtn.addEventListener("click", () => {
+        let note = document.createElement("div");
+        note.className = "input-box";
+    
+        note.innerHTML = `
+            <div class="toolbar">
+                <select class="font-size">
+                    <option value="14">14px</option>
+                    <option value="16">16px</option>
+                    <option value="18">18px</option>
+                    <option value="20">20px</option>
+                    <option value="22">22px</option>
+                </select>
+                <select class="font-style">
+                    <option value="Arial">Arial</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Verdana">Verdana</option>
+                </select>
+                <input type="color" class="text-color">
+                <input type="color" class="bg-color">
+                <img src="delete.png" class="delete-btn">
+            </div>
+            <p class="text-box" contenteditable="true"></p>
+        `;
+    
+        notesContainer.appendChild(note);
+        attachEventListeners();
+        updateStorage();
+    });
+    
+    document.addEventListener("keydown", event => {
+        if (event.key === "Enter") {
+            document.execCommand("insertLineBreak");
+            event.preventDefault();
+        }
+    });
+    
+    showNotes();
+</script>    
+</body>
+</html>

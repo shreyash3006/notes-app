@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #cf9aff, #95c0ff);
+    color: #fff;
+    padding-top: 4%;
+    padding-left: 10%;
+}
+
+.container h1 {
+    display: flex;
+    align-items: center;
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.container h1 img {
+    width: 60px;
+}
+
+.container button img {
+    width: 25px;
+    margin-right: 8px;
+}
+
+.container button {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(#9418fd, #571094);
+    color: #fff;
+    font-size: 16px;
+    outline: 0;
+    border: 0;
+    border-radius: 40px;
+    padding: 15px 25px;
+    margin: 30px 0 20px;
+    cursor: pointer;
+}
+
+.input-box {
+    width: 90%;
+    min-height: 150px;
+    padding: 10px;
+    position: relative;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.toolbar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 5px;
+    align-items: center;
+    padding: 5px;
+}
+
+.toolbar select, .toolbar input {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.text-box {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #333;
+    word-wrap: break-word;
+    background: transparent;
+    flex-grow: 1;
+}
+
+.delete-btn {
+    width: 25px;
+    cursor: pointer;
+}

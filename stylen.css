@@ -13,6 +13,8 @@
     padding-top: 4%;
     padding-left: 10%;
 }
+span{
+    color: black ;}
 
 .container h1 {
     display: flex;
